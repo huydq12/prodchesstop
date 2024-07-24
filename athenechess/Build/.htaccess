@@ -1,0 +1,43 @@
+# enable cached data to be read
+Header set Content-Security-Policy "worker-src 'self' blob:; script-src 'self' blob:;"
+
+<IfModule mod_mime.c>
+    # compression disabled?
+    AddType application/wasm .wasm
+    AddOutputFilterByType DEFLATE application/wasm
+
+    # support for compressionfallback option
+    AddEncoding gzip .unityweb
+
+    # Gzip support
+    <Files *.js.gz>
+        AddType application/javascript .gz
+        AddEncoding gzip .gz
+        ForceType application/javascript
+    </Files>
+    <Files *.wasm.gz>
+        AddType "application/wasm" .gz
+        AddEncoding gzip .gz
+    </Files>
+
+    <Files *.data.gz>
+        AddType "application/octet-stream" .gz
+        AddEncoding gzip .gz
+    </Files>
+
+    # brotli support
+    <Files *.js.br>
+        AddType "text/javascript" .br
+        AddEncoding br .br
+    </Files>
+
+    <Files *.wasm.br>
+        AddType "application/wasm" .br
+        AddEncoding br .br
+    </Files>
+
+    <Files *.data.br>
+        AddType "application/octet-stream" .br
+        AddEncoding br .br
+    </Files>
+</IfModule>
