@@ -1,10 +1,11 @@
-const cacheName = "DefaultCompany-PokeChess-0.1.0";
+const cacheName = "Athene-PokeChess-0.1.1";
 const contentToCache = [
     "Build/athenechess.loader.js",
     "Build/athenechess.framework.js",
     "Build/athenechess.data",
     "Build/athenechess.wasm",
     "TemplateData/style.css"
+
 ];
 
 self.addEventListener('install', function (e) {
